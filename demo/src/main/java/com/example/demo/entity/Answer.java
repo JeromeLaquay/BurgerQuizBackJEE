@@ -16,12 +16,6 @@ public class Answer {
 	
 	public Answer() {
 	}
-
-	public Answer(Long id, String value) {
-		super();
-		this.id = id;
-		this.value = value;
-	}
 	
 	public Answer(String value) {
 		this.value = value;

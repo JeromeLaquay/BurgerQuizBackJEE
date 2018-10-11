@@ -21,5 +21,9 @@ public class AnswerService {
 		return answerRepository.findAll();
 	}
 	
+	public void create(Answer answer) {
+		answerRepository.save(answer);
+	}
+	
 
 }
