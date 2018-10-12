@@ -6,16 +6,16 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Answer;
 import com.example.demo.repository.AnswerRepository;
-import com.example.demo.repository.AnswerRepositoryInt;
+import com.example.demo.repository.AnswerRepository;
 
 @Service
 public class AnswerService {
 
-	public AnswerService(AnswerRepositoryInt answerRepository) {
+	public AnswerService(AnswerRepository answerRepository) {
 		this.answerRepository = answerRepository;
 	}
 
-	private AnswerRepositoryInt answerRepository;
+	private AnswerRepository answerRepository;
 	
 	public List<Answer> getAll() {
 		return answerRepository.findAll();

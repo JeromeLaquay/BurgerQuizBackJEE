@@ -8,3 +8,8 @@ install:
 - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
 - mvn test
+deploy:
+  provider: heroku
+  api_key:
+    secure: "b3f4f213-6d13-4dff-b24c-f4a4dd3003a6"
+  app: demoj2ee

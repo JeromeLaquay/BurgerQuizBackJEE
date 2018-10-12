@@ -1,15 +1,18 @@
 package com.example.demo.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Answer {
+public class Choice {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,14 +22,19 @@ public class Answer {
 	
 	@JsonIgnore
 	@ManyToOne
-	private Choice choice;
+	private Question question;
 	
-	public Answer() {
+	@OneToMany(mappedBy="choice")
+	private List<Answer> answers;
+	
+	public Choice() {
 	}
-	
-	public Answer(String value, Choice choice) {
+
+	public Choice(String value, Question question, List<Answer> answers) {
+		super();
 		this.value = value;
-		this.choice=choice;
+		this.question = question;
+		this.answers = answers;
 	}
 
 	public Long getId() {
@@ -45,12 +53,21 @@ public class Answer {
 		this.value = value;
 	}
 
-	public Choice getChoice() {
-		return choice;
+	public Question getQuestion() {
+		return question;
 	}
 
-	public void setChoice(Choice choice) {
-		this.choice = choice;
+	public void setQuestion(Question question) {
+		this.question = question;
 	}
+
+	public List<Answer> getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
+	}
+	
 	
 }
