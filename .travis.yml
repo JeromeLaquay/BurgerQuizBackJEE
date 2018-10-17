@@ -2,14 +2,21 @@ language: java
 sudo: true
 jdk:
 - openjdk8
+
 before_install:
  - chmod +x mvnw
+ 
 install:
 - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
 script:
 - mvn test
+
 deploy:
   provider: heroku
   api_key:
     secure: "b3f4f213-6d13-4dff-b24c-f4a4dd3003a6"
   app: demoj2ee
+  
+notifications:
+    slack: masteriii2018:RRLvVQV8RKvlaJSDZfJJAwFf
