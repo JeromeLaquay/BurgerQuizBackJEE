@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +14,7 @@ public class Question {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private Long id;
+	 private Integer id;
 	
 	private String text;
 	
@@ -22,6 +23,11 @@ public class Question {
 	
 	public Question() {
 	}
+	
+	public Question(String text) {
+		super();
+		this.text = text;
+	}
 
 	public Question(String text, List<Choice> choices) {
 		super();
@@ -29,11 +35,11 @@ public class Question {
 		this.choices = choices;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -52,4 +58,11 @@ public class Question {
 	public void setChoices(List<Choice> choices) {
 		this.choices = choices;
 	}
+
+	@Override
+	public String toString() {
+		return "Question [id=" + id + ", text=" + text + ", choices=" + choices + "]";
+	}
+	
+	
 }
