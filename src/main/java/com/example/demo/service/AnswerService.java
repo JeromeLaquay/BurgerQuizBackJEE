@@ -26,11 +26,7 @@ public class AnswerService {
 		return answerRepository.findById(id);
 	}
 	
-	public void create(Answer answer) {
-		answerRepository.save(answer);
-	}
-	
-	public Answer createOrUpdateAnswer(Answer answer) {
+	public Answer createOrUpdate(Answer answer) {
 		return answerRepository.saveAndFlush(answer);
 	}
 

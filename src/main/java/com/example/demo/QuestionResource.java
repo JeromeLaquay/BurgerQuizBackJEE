@@ -30,7 +30,6 @@ public class QuestionResource {
 	
 	@RequestMapping("/questions")
 	public List<Question> get() {
-		List<Question> questions = questionService.getAll();
 		return questionService.getAll();
 	}
 	
@@ -45,22 +44,26 @@ public class QuestionResource {
 	@RequestMapping(method = RequestMethod.POST,value ="/questions", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<Question> createOrUpdateQuestion(@RequestBody Question question)  {
     	try{
-    		Question quest = questionService.update(question);
-    		return new ResponseEntity<Question>(quest, HttpStatus.OK);
+    		Question quest = questionService.createOrUpdate(question);
+    		return new ResponseEntity<>(quest, HttpStatus.OK);
     	}catch(Exception e){
-    		return new ResponseEntity<Question>(HttpStatus.BAD_REQUEST);
+    		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     	}
 	}
 	
 	@RequestMapping(method = RequestMethod.POST,value ="/questions/{id}/choices", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<Choice> createOrUpdateChoice(@PathVariable("id") int id, @RequestBody Choice choice)  {
     	try{
-    		choice.setQuestion(questionService.findById(id).get());
-    		Choice choi = choiceService.createOrUpdateChoice(choice);
-    		return new ResponseEntity<Choice>(choi, HttpStatus.OK);
+    		Optional<Question> quest = questionService.findById(id);
+    		if(quest.isPresent()) {
+	    		choice.setQuestion(quest.get());
+	    		Choice choi = choiceService.createOrUpdate(choice);
+	    		return new ResponseEntity<>(choi, HttpStatus.OK);
+    		}
     	}catch(Exception e){
-    		return new ResponseEntity<Choice>(HttpStatus.BAD_REQUEST);
+    		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     	}
+    	return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 	
 	

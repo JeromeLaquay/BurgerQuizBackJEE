@@ -25,7 +25,7 @@ public class ChoiceService {
 		return choiceRepository.findById(id);
 	}
 	
-	public Choice createOrUpdateChoice(Choice choice) {
+	public Choice createOrUpdate(Choice choice) {
 		return choiceRepository.saveAndFlush(choice);
 	}
 }

@@ -10,11 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.Answer;
-import com.example.demo.entity.Question;
 import com.example.demo.service.AnswerService;
 
 @RestController("/answers")
@@ -33,12 +31,12 @@ public class AnswerResource {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST,value = "/answers" , produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<String> create(@RequestBody Answer answer)  {
+	public ResponseEntity<String> createOrUpdateAnswer(@RequestBody Answer answer)  {
     	try{
-    		answerService.create(answer);
-    		return new ResponseEntity<String>("The answer is created", HttpStatus.OK);
+    		answerService.createOrUpdate(answer);
+    		return new ResponseEntity<>("The answer is created", HttpStatus.OK);
     	}catch(Exception e){
-    		return new ResponseEntity<String>("Bad request", HttpStatus.BAD_REQUEST);
+    		return new ResponseEntity<>("Bad request", HttpStatus.BAD_REQUEST);
     	}
 	}
 	

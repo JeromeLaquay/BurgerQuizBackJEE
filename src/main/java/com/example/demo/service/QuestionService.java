@@ -29,7 +29,7 @@ public class QuestionService {
 		return questionRepository.save(question);
 	}
 	
-	public Question update(Question question) {
+	public Question createOrUpdate(Question question) {
 		return questionRepository.saveAndFlush(question);
 	}
 	
