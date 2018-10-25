@@ -55,7 +55,7 @@ public abstract class AbstractPackagerViewTest {
         list = answerRepository.saveAll(
                 IntStream
                         .rangeClosed(0, MAX_ELEMENT - 1)
-                        .mapToObj(i -> new Answer())
+                        .mapToObj(i -> new Answer("j",null))
                         .collect(Collectors.toList()));
         Answer first = list.get(0);
         doublon = list.get(MAX_ELEMENT - 1);

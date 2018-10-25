@@ -3,6 +3,8 @@ package com.example.demo;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -31,13 +33,12 @@ public class AnswerResource {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST,value = "/answers" , produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<String> createOrUpdateAnswer(@RequestBody Answer answer)  {
-    	try{
-    		answerService.createOrUpdate(answer);
-    		return new ResponseEntity<>("The answer is created", HttpStatus.OK);
-    	}catch(Exception e){
-    		return new ResponseEntity<>("Bad request", HttpStatus.BAD_REQUEST);
-    	}
+	public ResponseEntity<String> createOrUpdateAnswer(@Valid @RequestBody Answer answer)  {
+		if(answer.getValue().isEmpty() || answer.getValue() == null ) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		answerService.createOrUpdate(answer);
+		return new ResponseEntity<>("The answer is created", HttpStatus.OK);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value="/answers/{id}")

@@ -40,4 +40,16 @@ public class AnswerRestTemplateTest extends AbstractPackagerViewTest{
 				Assertions.assertThat(e.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
 		}
 	}
+	
+	@Test
+	public void notValidCreation() {
+		try {
+			restTemplate.postForEntity(baseUrl + "/answers",
+					new Answer(),
+					Answer.class);
+			Assert.fail("bad request expected");
+		}catch(HttpClientErrorException e) {
+				Assertions.assertThat(e.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+		}
+	}
 }
