@@ -30,7 +30,7 @@ public class AnswerRestTemplateTest extends AbstractPackagerViewTest{
 	public void answerNotFound() {
 		try {
 			restTemplate.exchange(
-					baseUrl + "/answers/" + (MAX_ELEMENT + 3),
+					baseUrl + "/answers/" + (MAX_ELEMENT + 200),
 					HttpMethod.GET,
 					null,
 					Answer.class);
