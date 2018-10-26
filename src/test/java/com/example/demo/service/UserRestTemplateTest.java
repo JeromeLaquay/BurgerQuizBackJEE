@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import javax.transaction.Transactional;
+
 import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,6 +15,7 @@ import com.example.demo.entity.User;
 public class UserRestTemplateTest extends AbstractPackagerViewTest{
 
 	@Test
+	@Transactional
 	public void notValidCreation() {
 		try {
 			restTemplate.postForEntity(baseUrl + "/subscription",
