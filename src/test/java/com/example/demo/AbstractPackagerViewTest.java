@@ -63,7 +63,7 @@ public abstract class AbstractPackagerViewTest {
         doublon.setValue(first.getValue());
 
         answerRepository.save(doublon);
-
+        System.out.println("before done ---------------------");
     }
 
 }
