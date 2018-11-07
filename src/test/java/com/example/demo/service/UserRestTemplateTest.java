@@ -15,7 +15,6 @@ import com.example.demo.entity.User;
 public class UserRestTemplateTest extends AbstractPackagerViewTest{
 
 	@Test
-	@Transactional
 	public void notValidCreation() {
 		try {
 			restTemplate.postForEntity(baseUrl + "/subscription",

@@ -17,7 +17,6 @@ import com.example.demo.entity.Answer;
 public class AnswerRestTemplateTest extends AbstractPackagerViewTest{
 
 	@Test
-	@Transactional
 	public void foundAnswer() {
 		int expectedId=1;
 		ResponseEntity<Answer> response = restTemplate.exchange(baseUrl + "/answers/" + expectedId, 
@@ -30,7 +29,6 @@ public class AnswerRestTemplateTest extends AbstractPackagerViewTest{
 	}
 	
 	@Test
-	@Transactional
 	public void answerNotFound() {
 		try {
 			restTemplate.exchange(
@@ -46,7 +44,6 @@ public class AnswerRestTemplateTest extends AbstractPackagerViewTest{
 	}
 	
 	@Test
-	@Transactional
 	public void notValidCreation() {
 		try {
 			restTemplate.postForEntity(baseUrl + "/answers",
