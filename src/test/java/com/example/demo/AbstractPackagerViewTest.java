@@ -51,7 +51,7 @@ public abstract class AbstractPackagerViewTest {
     public void setup() {
         this.mockMvc = webAppContextSetup(webApplicationContext).build();
         this.baseUrl = "http://localhost:" + this.serverPort;
-
+        answerRepository.deleteAll();
         list = answerRepository.saveAll(
                 IntStream
                         .rangeClosed(0, MAX_ELEMENT - 1)
