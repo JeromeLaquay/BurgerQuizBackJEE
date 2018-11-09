@@ -12,11 +12,11 @@ install:
 script:
 - mvn test
 
-deploy:
-  provider: heroku
-  api_key:
-    secure: "c8fb4c3a-e563-4ed1-bca9-aee5540cbaef"
-  app: demoj2ee
+#deploy:
+#  provider: heroku
+#  api_key:
+#    secure: "c8fb4c3a-e563-4ed1-bca9-aee5540cbaef"
+#  app: demoj2ee
   
 notifications:
     slack: masteriii2018:RRLvVQV8RKvlaJSDZfJJAwFf
