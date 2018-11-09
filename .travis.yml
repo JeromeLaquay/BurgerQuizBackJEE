@@ -15,7 +15,7 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: "b3f4f213-6d13-4dff-b24c-f4a4dd3003a6"
+    secure: "c8fb4c3a-e563-4ed1-bca9-aee5540cbaef"
   app: demoj2ee
   
 notifications:
