@@ -24,7 +24,7 @@ import com.example.demo.repository.AnswerRepository;
 public abstract class AbstractPackagerViewTest {
 
 
-    public static final int MAX_ELEMENT = 200;
+//    public static final int MAX_ELEMENT = 200;
 
     protected MockMvc mockMvc;
 
@@ -51,18 +51,18 @@ public abstract class AbstractPackagerViewTest {
     public void setup() {
         this.mockMvc = webAppContextSetup(webApplicationContext).build();
         this.baseUrl = "http://localhost:" + this.serverPort;
-        list = answerRepository.saveAll(
-                IntStream
-                        .rangeClosed(0, MAX_ELEMENT - 1)
-                        .mapToObj(i -> new Answer("j",null))
-                        .collect(Collectors.toList()));
-        Answer first = list.get(0);
-        doublon = list.get(MAX_ELEMENT - 1);
-        doublon.setId(first.getId());
-        doublon.setValue(first.getValue());
-
-        answerRepository.save(doublon);
-        System.out.println("before done ---------------------");
+//        list = answerRepository.saveAll(
+//                IntStream
+//                        .rangeClosed(0, MAX_ELEMENT - 1)
+//                        .mapToObj(i -> new Answer("j",null))
+//                        .collect(Collectors.toList()));
+//        Answer first = list.get(0);
+//        doublon = list.get(MAX_ELEMENT - 1);
+//        doublon.setId(first.getId());
+//        doublon.setValue(first.getValue());
+//
+//        answerRepository.save(doublon);
+//        System.out.println("before done ---------------------");
     }
 
 }
