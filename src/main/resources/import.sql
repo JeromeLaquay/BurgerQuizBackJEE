@@ -57,3 +57,5 @@ insert into answer (id,value,choice_id) values(11,'non',14);
 insert into answer (id,value,choice_id) values(12,'non',14);
 insert into answer (id,value,choice_id) values(13,'merde',15);
 insert into answer (id,value,choice_id) values(14,'merde',15);
+
+insert into utilisateur (id,mail,newsletter) values(1,'jl@mail.fr',true);

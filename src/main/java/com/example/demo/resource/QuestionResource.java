@@ -29,11 +29,13 @@ public class QuestionResource {
 	private QuestionService questionService;
 	private ChoiceService choiceService;
 	
+	@CrossOrigin
 	@RequestMapping("/questions")
 	public List<Question> get() {
 		return questionService.getAll();
 	}
 	
+	@CrossOrigin
 	@RequestMapping(value="/questions/{id}")
 	public ResponseEntity<Question> findById(@PathVariable("id") Integer id) {
 		System.out.println("id = "+id);
@@ -42,6 +44,7 @@ public class QuestionResource {
 				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
 	
+	@CrossOrigin
 	@RequestMapping(method = RequestMethod.POST,value ="/questions", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<Question> createOrUpdateQuestion(@RequestBody Question question)  {
     	try{
@@ -52,6 +55,7 @@ public class QuestionResource {
     	}
 	}
 	
+	@CrossOrigin
 	@RequestMapping(method = RequestMethod.POST,value ="/questions/{id}/choices", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<Choice> createOrUpdateChoice(@PathVariable("id") int id, @RequestBody Choice choice)  {
     	try{
