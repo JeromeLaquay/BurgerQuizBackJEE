@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.resource;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,11 +27,13 @@ public class AnswerResource {
 
 	private AnswerService answerService;
 	
+	//getAll
 	@RequestMapping("/answers")
 	public List<Answer> get() {
 		return answerService.getAll();
 	}
 	
+	//createOrUpdate
 	@RequestMapping(method = RequestMethod.POST,value = "/answers" , produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<String> createOrUpdateAnswer(@Valid @RequestBody Answer answer)  {
 		if(answer.getValue().isEmpty() || answer.getValue() == null ) {
@@ -41,6 +43,8 @@ public class AnswerResource {
 		return new ResponseEntity<>("The answer is created", HttpStatus.OK);
 	}
 	
+	
+	//findById
 	@RequestMapping(method = RequestMethod.GET, value="/answers/{id}")
 	public ResponseEntity<Answer> findById(@PathVariable("id") int id) {
 		Optional<Answer> answer = answerService.findById(id);

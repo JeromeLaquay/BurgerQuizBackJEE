@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.resource;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,12 +34,12 @@ public class QuestionResource {
 		return questionService.getAll();
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value="/questions/{id}")
-	public ResponseEntity<Question> findById(@PathVariable("id") int id) {
+	@RequestMapping(value="/questions/{id}")
+	public ResponseEntity<Question> findById(@PathVariable("id") Integer id) {
+		System.out.println("id = "+id);
 		Optional<Question> question = questionService.findById(id);
 		return question.map(response -> ResponseEntity.ok().body(response))
 				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-		
 	}
 	
 	@RequestMapping(method = RequestMethod.POST,value ="/questions", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})

@@ -29,5 +29,9 @@ public class AnswerService {
 	public Answer createOrUpdate(Answer answer) {
 		return answerRepository.saveAndFlush(answer);
 	}
+	
+	public void delete(Answer answer) {
+		answerRepository.delete(answer);
+	}
 
 }

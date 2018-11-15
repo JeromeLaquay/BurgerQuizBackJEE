@@ -25,10 +25,6 @@ public class QuestionService {
 		return questionRepository.findById(id);
 	}
 	
-	public Question create(Question question) {
-		return questionRepository.save(question);
-	}
-	
 	public Question createOrUpdate(Question question) {
 		return questionRepository.saveAndFlush(question);
 	}
