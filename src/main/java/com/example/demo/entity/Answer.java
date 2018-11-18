@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -16,43 +15,60 @@ public class Answer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Integer id;
 	
-	@NotEmpty
-	private String value;
-	
 	@JsonIgnore
 	@ManyToOne
 	private Choice choice;
 	
+	@JsonIgnore
+	@ManyToOne
+	private QuizInstance quizInstance;
+	
+	
 	public Answer() {
 	}
-	
-	public Answer(String value, Choice choice) {
-		this.value = value;
-		this.choice=choice;
+
+	public Answer(Integer id, Choice choice, QuizInstance quizInstance) {
+		super();
+		this.id = id;
+		this.choice = choice;
+		this.quizInstance = quizInstance;
 	}
+
+	public Answer(Choice choice, QuizInstance quizInstance) {
+		super();
+		this.choice = choice;
+		this.quizInstance = quizInstance;
+	}
+
 
 	public Integer getId() {
 		return id;
 	}
 
+
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getValue() {
-		return value;
-	}
-
-	public void setValue(String value) {
-		this.value = value;
 	}
 
 	public Choice getChoice() {
 		return choice;
 	}
 
+
 	public void setChoice(Choice choice) {
 		this.choice = choice;
 	}
+
+
+	public QuizInstance getQuizInstance() {
+		return quizInstance;
+	}
+
+
+	public void setQuizInstance(QuizInstance quizInstance) {
+		this.quizInstance = quizInstance;
+	}
+	
+	
 	
 }

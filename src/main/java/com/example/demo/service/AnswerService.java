@@ -22,6 +22,10 @@ public class AnswerService {
 		return answerRepository.findAll();
 	}
 	
+	public List<Answer> getByQuestion(int idQuestion) {
+		return answerRepository.findByQuestion(idQuestion);
+	}
+	
 	public Optional<Answer> findById(Integer id) {
 		return answerRepository.findById(id);
 	}

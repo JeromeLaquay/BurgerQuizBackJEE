@@ -28,6 +28,10 @@ public class ChoiceService {
 		return choiceRepository.findById(id);
 	}
 	
+	public List<Choice> findByQuestion(Integer id) {
+		return choiceRepository.findByQuestion(id);
+	}
+	
 	public Choice createOrUpdate(Choice choice) {
 		return choiceRepository.saveAndFlush(choice);
 	}

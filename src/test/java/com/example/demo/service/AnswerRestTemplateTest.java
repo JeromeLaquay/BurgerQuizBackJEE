@@ -45,7 +45,7 @@ public class AnswerRestTemplateTest extends AbstractPackagerViewTest{
 	public void notValidCreation() {
 		try {
 			restTemplate.postForEntity(baseUrl + "/answers",
-					new Answer(),
+					new Answer(null,null),
 					Answer.class);
 			Assert.fail("bad request expected");
 		}catch(HttpClientErrorException e) {

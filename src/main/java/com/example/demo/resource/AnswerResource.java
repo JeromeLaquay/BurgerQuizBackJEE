@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,23 +29,36 @@ public class AnswerResource {
 	private AnswerService answerService;
 	
 	//getAll
+	@CrossOrigin
 	@RequestMapping("/answers")
 	public List<Answer> get() {
 		return answerService.getAll();
 	}
 	
+	@CrossOrigin
+	@RequestMapping("/questions/{id}/answers")
+	public List<Answer> getByQuestion(@PathVariable("id") int idQuestion) {
+		return answerService.getByQuestion(idQuestion);
+	}
+	
 	//createOrUpdate
+	@CrossOrigin
 	@RequestMapping(method = RequestMethod.POST,value = "/answers" , produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<String> createOrUpdateAnswer(@Valid @RequestBody Answer answer)  {
-		if(answer.getValue().isEmpty() || answer.getValue() == null ) {
+		try {
+			if(answer.getChoice().getId() ==null || answer.getQuizInstance().getId() == null) {
+				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			}
+			answerService.createOrUpdate(answer);
+			return new ResponseEntity<>("The answer is created", HttpStatus.OK);
+		}catch(Exception e){
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		answerService.createOrUpdate(answer);
-		return new ResponseEntity<>("The answer is created", HttpStatus.OK);
 	}
 	
 	
 	//findById
+	@CrossOrigin
 	@RequestMapping(method = RequestMethod.GET, value="/answers/{id}")
 	public ResponseEntity<Answer> findById(@PathVariable("id") int id) {
 		Optional<Answer> answer = answerService.findById(id);

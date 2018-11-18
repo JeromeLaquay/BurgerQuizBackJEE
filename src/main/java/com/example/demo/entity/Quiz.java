@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Quiz {
 
@@ -20,6 +22,10 @@ public class Quiz {
 	@OneToMany(mappedBy="quiz")
 	private List<Question> questions;
 	
+	@JsonIgnore
+	@OneToMany(mappedBy="quiz")
+	private List<QuizInstance> instances;
+	
 	public Quiz() {
 	}
 	
@@ -28,10 +34,11 @@ public class Quiz {
 		this.name = name;
 	}
 
-	public Quiz(String name, List<Question> questions) {
+	public Quiz(String name, List<Question> questions, List<QuizInstance> instances) {
 		super();
 		this.name = name;
 		this.questions = questions;
+		this.instances=instances;
 	}
 
 	public Integer getId() {
@@ -58,10 +65,19 @@ public class Quiz {
 		this.questions = questions;
 	}
 
+	public List<QuizInstance> getInstances() {
+		return instances;
+	}
+
+	public void setInstances(List<QuizInstance> instances) {
+		this.instances = instances;
+	}
+
 	@Override
 	public String toString() {
-		return "Question [id=" + id + ", name=" + name + ", questions=" + questions + "]";
+		return "Quiz [id=" + id + ", name=" + name + ", questions=" + questions + ", instances=" + instances + "]";
 	}
+
 	
 	
 }

@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,12 +29,20 @@ public class ChoiceResource {
 	private AnswerService answerService;
 	private ChoiceService choiceService;
 	
+	@CrossOrigin
 	@RequestMapping("/choices")
 	public List<Choice> get() {
 		return choiceService.getAll();
 	}
+	
+	@CrossOrigin
+	@RequestMapping("/questions/{id}/choices")
+	public List<Choice> getByQuestion(@PathVariable("id") int idQuestion) {
+		return choiceService.findByQuestion(idQuestion);
+	}
 
-	@RequestMapping(method = RequestMethod.POST,value ="/choices/{id}/answers", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
+	@CrossOrigin
+	@RequestMapping(method = RequestMethod.POST,value ="/choices", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<Answer> createOrUpdateChoice(@PathVariable("id") int id, @RequestBody Answer answer)  {
     	try{
     		Optional<Choice> choix = choiceService.findById(id);
