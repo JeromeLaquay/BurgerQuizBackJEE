@@ -29,6 +29,11 @@ public class Choice {
 	
 	public Choice() {
 	}
+	
+	public Choice(Integer id) {
+		super();
+		this.id = id;
+	}
 
 	public Choice(String value, Question question, List<Answer> answers) {
 		super();

@@ -49,6 +49,11 @@ public class QuizInstance {
 		this.answers = answers;
 	}
 
+	public QuizInstance(Integer id) {
+		super();
+		this.id = id;
+	}
+
 	public Integer getId() {
 		return id;
 	}

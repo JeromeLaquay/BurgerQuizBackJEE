@@ -41,19 +41,4 @@ public class ChoiceResource {
 		return choiceService.findByQuestion(idQuestion);
 	}
 
-	@CrossOrigin
-	@RequestMapping(method = RequestMethod.POST,value ="/choices", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<Answer> createOrUpdateChoice(@PathVariable("id") int id, @RequestBody Answer answer)  {
-    	try{
-    		Optional<Choice> choix = choiceService.findById(id);
-    		if(choix.isPresent()) {
-    			answer.setChoice(choix.get());
-        		Answer ans = answerService.createOrUpdate(answer);
-        		return new ResponseEntity<>(ans, HttpStatus.OK);
-    		}
-    	}catch(Exception e){
-    		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    	}
-		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-	}
 }

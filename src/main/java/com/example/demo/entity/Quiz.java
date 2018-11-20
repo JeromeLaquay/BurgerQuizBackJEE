@@ -29,9 +29,9 @@ public class Quiz {
 	public Quiz() {
 	}
 	
-	public Quiz(String name) {
+	public Quiz(Integer id) {
 		super();
-		this.name = name;
+		this.id = id;
 	}
 
 	public Quiz(String name, List<Question> questions, List<QuizInstance> instances) {

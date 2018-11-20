@@ -41,24 +41,24 @@ insert into quiz (id,name) values (4,'J2EE quiz');
 		insert into choice (id,value,question_id) values (14,'non',4);
 		insert into choice (id,value,question_id) values (15,'merde',4);
 		
-insert into quiz_instance(id,next_Question,quiz_id) values (1,false,1);
-		
---les réponses
-insert into answer (id,choice_id,quiz_instance_id) values(1,2,1);
-insert into answer (id,choice_id,quiz_instance_id) values(2,2,1);
-insert into answer (id,choice_id,quiz_instance_id) values(3,4,1);
-insert into answer (id,choice_id,quiz_instance_id) values(4,1,1);
-
-insert into answer (id,choice_id,quiz_instance_id) values(5,13,null);
-insert into answer (id,choice_id,quiz_instance_id) values(6,13,null);
-insert into answer (id,choice_id,quiz_instance_id) values(7,13,null);
-insert into answer (id,choice_id,quiz_instance_id) values(8,13,null);
-insert into answer (id,choice_id,quiz_instance_id) values(9,13,null);
-insert into answer (id,choice_id,quiz_instance_id) values(10,14,null);
-insert into answer (id,choice_id,quiz_instance_id) values(11,14,null);
-insert into answer (id,choice_id,quiz_instance_id) values(12,14,null);
-insert into answer (id,choice_id,quiz_instance_id) values(13,15,null);
-insert into answer (id,choice_id,quiz_instance_id) values(14,15,null);
+--insert into quiz_instance(id,next_Question,quiz_id) values (1,false,1);
+--		
+----les réponses
+--insert into answer (id,choice_id,quiz_instance_id) values(1,2,1);
+--insert into answer (id,choice_id,quiz_instance_id) values(2,2,1);
+--insert into answer (id,choice_id,quiz_instance_id) values(3,4,1);
+--insert into answer (id,choice_id,quiz_instance_id) values(4,1,1);
+--
+--insert into answer (id,choice_id,quiz_instance_id) values(5,13,null);
+--insert into answer (id,choice_id,quiz_instance_id) values(6,13,null);
+--insert into answer (id,choice_id,quiz_instance_id) values(7,13,null);
+--insert into answer (id,choice_id,quiz_instance_id) values(8,13,null);
+--insert into answer (id,choice_id,quiz_instance_id) values(9,13,null);
+--insert into answer (id,choice_id,quiz_instance_id) values(10,14,null);
+--insert into answer (id,choice_id,quiz_instance_id) values(11,14,null);
+--insert into answer (id,choice_id,quiz_instance_id) values(12,14,null);
+--insert into answer (id,choice_id,quiz_instance_id) values(13,15,null);
+--insert into answer (id,choice_id,quiz_instance_id) values(14,15,null);
 
 
 

@@ -1,9 +1,6 @@
 package com.example.demo.resource;
 
 import java.util.List;
-import java.util.Optional;
-
-import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.Answer;
+import com.example.demo.entity.Choice;
+import com.example.demo.entity.QuizInstance;
 import com.example.demo.service.AnswerService;
 
-@RestController("/answers")
+@RestController
 public class AnswerResource {
 	
 	
@@ -43,27 +42,20 @@ public class AnswerResource {
 	
 	//createOrUpdate
 	@CrossOrigin
-	@RequestMapping(method = RequestMethod.POST,value = "/answers" , produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<String> createOrUpdateAnswer(@Valid @RequestBody Answer answer)  {
+	@RequestMapping(method = RequestMethod.POST,value = "/answers/{idQuizInstance}/{idChoice}" , produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<Answer> createOrUpdateAnswer(@RequestBody Answer answ, @PathVariable("idQuizInstance") String idQuizInstance, @PathVariable("idChoice") String idChoice)  {
+		System.out.println("idquiins = "+ idQuizInstance + " idchoice ="+ idChoice);
 		try {
-			if(answer.getChoice().getId() ==null || answer.getQuizInstance().getId() == null) {
-				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-			}
-			answerService.createOrUpdate(answer);
-			return new ResponseEntity<>("The answer is created", HttpStatus.OK);
+			Answer answer=new Answer();
+			QuizInstance quizInstance=new QuizInstance(Integer.parseInt(idQuizInstance));
+			Choice choice=new Choice(Integer.parseInt(idChoice));
+			answer.setQuizInstance(quizInstance);
+			answer.setChoice(choice);
+			Answer answer2=answerService.createOrUpdate(answer);
+			return new ResponseEntity<>(answer2, HttpStatus.OK);
 		}catch(Exception e){
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
 	
-	
-	//findById
-	@CrossOrigin
-	@RequestMapping(method = RequestMethod.GET, value="/answers/{id}")
-	public ResponseEntity<Answer> findById(@PathVariable("id") int id) {
-		Optional<Answer> answer = answerService.findById(id);
-		return answer.map(response -> ResponseEntity.ok().body(response))
-				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-		
-	}
 }

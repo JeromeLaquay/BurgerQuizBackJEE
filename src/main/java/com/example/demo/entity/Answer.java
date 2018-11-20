@@ -68,6 +68,11 @@ public class Answer {
 	public void setQuizInstance(QuizInstance quizInstance) {
 		this.quizInstance = quizInstance;
 	}
+
+	@Override
+	public String toString() {
+		return "Answer [id=" + id + ", choice=" + choice.getId() + ", quizInstance=" + quizInstance.getId() + "]";
+	}
 	
 	
 	

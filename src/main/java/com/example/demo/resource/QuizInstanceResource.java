@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.entity.Quiz;
 import com.example.demo.entity.QuizInstance;
 import com.example.demo.service.QuizInstanceService;
 
@@ -41,9 +42,13 @@ public class QuizInstanceResource {
 	}
 	
 	@CrossOrigin
-	@RequestMapping(method = RequestMethod.POST,value ="/quiz_instances", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<QuizInstance> createOrUpdateQuestion(@RequestBody QuizInstance quizInstance)  {
+	@RequestMapping(method = RequestMethod.POST,value ="/quiz_instances/{id}", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<QuizInstance> createOrUpdateQuestion(@RequestBody QuizInstance quizIns,@PathVariable("id") String idQuiz)  {
     	try{
+    		QuizInstance quizInstance=new QuizInstance();
+        	Quiz quiz=new Quiz(Integer.parseInt(idQuiz));
+        	quizInstance.setNextQuestion(false);
+        	quizInstance.setQuiz(quiz);
     		QuizInstance quizzInstance = quizInstanceService.createOrUpdate(quizInstance);
     		return new ResponseEntity<>(quizzInstance, HttpStatus.OK);
     	}catch(Exception e){
