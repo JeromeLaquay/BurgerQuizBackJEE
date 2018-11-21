@@ -5,20 +5,17 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.Answer;
 import com.example.demo.entity.Choice;
 import com.example.demo.repository.ChoiceRepository;
 
 @Service
 public class ChoiceService {
 
-	public ChoiceService(ChoiceRepository choiceRepository, AnswerService answerService) {
+	public ChoiceService(ChoiceRepository choiceRepository) {
 		this.choiceRepository = choiceRepository;
-		this.answerService = answerService;
 	}
 
 	private ChoiceRepository choiceRepository;
-	private AnswerService answerService;
 	
 	public List<Choice> getAll(){
 		return choiceRepository.findAll();
@@ -28,18 +25,8 @@ public class ChoiceService {
 		return choiceRepository.findById(id);
 	}
 	
-	public List<Choice> findByQuestion(Integer id) {
-		return choiceRepository.findByQuestion(id);
-	}
-	
 	public Choice createOrUpdate(Choice choice) {
 		return choiceRepository.saveAndFlush(choice);
 	}
-	
-	public void deleteAllAnswers(Choice choice) {
-		List<Answer> answers = choice.getAnswers();
-		for(Answer answer : answers) {
-			answerService.delete(answer);
-		}
-	}
+
 }

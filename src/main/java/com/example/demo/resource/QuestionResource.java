@@ -21,27 +21,16 @@ import com.example.demo.service.QuestionService;
 @RestController
 public class QuestionResource {
 	
-	public QuestionResource(QuestionService questionService, ChoiceService choiceService) {
+	public QuestionResource(QuestionService questionService) {
 		this.questionService = questionService;
-		this.choiceService = choiceService;
 	}
 
 	private QuestionService questionService;
-	private ChoiceService choiceService;
 	
 	@CrossOrigin
 	@RequestMapping("/questions")
 	public List<Question> get() {
 		return questionService.getAll();
-	}
-	
-	@CrossOrigin
-	@RequestMapping(value="/questions/{id}")
-	public ResponseEntity<Question> findById(@PathVariable("id") Integer id) {
-		System.out.println("id = "+id);
-		Optional<Question> question = questionService.findById(id);
-		return question.map(response -> ResponseEntity.ok().body(response))
-				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
 	
 	@CrossOrigin
@@ -54,23 +43,5 @@ public class QuestionResource {
     		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     	}
 	}
-	
-	@CrossOrigin
-	@RequestMapping(method = RequestMethod.POST,value ="/questions/{id}/choices", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<Choice> createOrUpdateChoice(@PathVariable("id") int id, @RequestBody Choice choice)  {
-    	try{
-    		Optional<Question> quest = questionService.findById(id);
-    		if(quest.isPresent()) {
-	    		choice.setQuestion(quest.get());
-	    		Choice choi = choiceService.createOrUpdate(choice);
-	    		return new ResponseEntity<>(choi, HttpStatus.OK);
-    		}
-    	}catch(Exception e){
-    		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    	}
-    	return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-	}
-	
-	
 
 }

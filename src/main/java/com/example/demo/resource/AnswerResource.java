@@ -34,17 +34,10 @@ public class AnswerResource {
 		return answerService.getAll();
 	}
 	
-	@CrossOrigin
-	@RequestMapping("/questions/{id}/answers")
-	public List<Answer> getByQuestion(@PathVariable("id") int idQuestion) {
-		return answerService.getByQuestion(idQuestion);
-	}
-	
 	//createOrUpdate
 	@CrossOrigin
 	@RequestMapping(method = RequestMethod.POST,value = "/answers/{idQuizInstance}/{idChoice}" , produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<Answer> createOrUpdateAnswer(@RequestBody Answer answ, @PathVariable("idQuizInstance") String idQuizInstance, @PathVariable("idChoice") String idChoice)  {
-		System.out.println("idquiins = "+ idQuizInstance + " idchoice ="+ idChoice);
 		try {
 			Answer answer=new Answer();
 			QuizInstance quizInstance=new QuizInstance(Integer.parseInt(idQuizInstance));

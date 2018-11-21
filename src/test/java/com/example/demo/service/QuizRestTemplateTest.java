@@ -9,15 +9,16 @@ import org.springframework.web.client.HttpClientErrorException;
 
 import com.example.demo.AbstractPackagerViewTest;
 import com.example.demo.entity.Answer;
+import com.example.demo.entity.Quiz;
 
 
-public class AnswerRestTemplateTest extends AbstractPackagerViewTest{
+public class QuizRestTemplateTest extends AbstractPackagerViewTest{
 	
 	@Test
-	public void answerNotFound() {
+	public void quizNotFound() {
 		try {
 			restTemplate.exchange(
-					baseUrl + "/answers/" + 100,
+					baseUrl + "/quiz/" + 100,
 					HttpMethod.GET,
 					null,
 					Answer.class);
@@ -31,9 +32,9 @@ public class AnswerRestTemplateTest extends AbstractPackagerViewTest{
 	@Test
 	public void notValidCreation() {
 		try {
-			restTemplate.postForEntity(baseUrl + "/answers/1000/1000",
-					new Answer(),
-					Answer.class);
+			restTemplate.postForEntity(baseUrl + "/quiz",
+					new Quiz(),
+					Quiz.class);
 			Assert.fail("bad request expected");
 		}catch(HttpClientErrorException e) {
 				Assertions.assertThat(e.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
