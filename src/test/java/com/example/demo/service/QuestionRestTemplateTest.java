@@ -10,16 +10,16 @@ import org.springframework.web.client.HttpClientErrorException;
 
 import com.example.demo.AbstractPackagerViewTest;
 import com.example.demo.entity.Answer;
-import com.example.demo.entity.Quiz;
+import com.example.demo.entity.Question;
 
 
-public class QuizRestTemplateTest extends AbstractPackagerViewTest{
+public class QuestionRestTemplateTest extends AbstractPackagerViewTest{
 	
 	@Test
 	public void quizNotFound() {
 		try {
 			restTemplate.exchange(
-					baseUrl + "/quiz/" + 100,
+					baseUrl + "/questions/" + 100,
 					HttpMethod.GET,
 					null,
 					Answer.class);
@@ -33,9 +33,9 @@ public class QuizRestTemplateTest extends AbstractPackagerViewTest{
 	@Test
 	public void notValidCreation() {
 		try {
-			restTemplate.postForEntity(baseUrl + "/quiz",
-					new Quiz(),
-					Quiz.class);
+			restTemplate.postForEntity(baseUrl + "/questions",
+					new Question(),
+					Question.class);
 			Assert.fail("bad request expected");
 		}catch(HttpClientErrorException e) {
 				Assertions.assertThat(e.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
@@ -45,9 +45,9 @@ public class QuizRestTemplateTest extends AbstractPackagerViewTest{
 	@Test
 	public void validCreation() {
 		try {
-			ResponseEntity<Quiz> quizInstance = restTemplate.postForEntity(baseUrl + "/quiz",
-					new Quiz("quiz quiz"),
-					Quiz.class);
+			ResponseEntity<Question> quizInstance = restTemplate.postForEntity(baseUrl + "/questions",
+					new Question("question"),
+					Question.class);
 			Assert.assertEquals(HttpStatus.OK, quizInstance.getStatusCode());
 		}catch(HttpClientErrorException e) {
 			Assert.fail("ok request expected");

@@ -35,6 +35,11 @@ public class Quiz {
 		super();
 		this.id = id;
 	}
+	
+	public Quiz(String name) {
+		super();
+		this.name = name;
+	}
 
 	public Quiz(String name, List<Question> questions, List<QuizInstance> instances) {
 		super();

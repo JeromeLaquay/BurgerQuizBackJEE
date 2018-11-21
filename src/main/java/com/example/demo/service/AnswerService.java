@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Answer;
-import com.example.demo.entity.Choice;
 import com.example.demo.repository.AnswerRepository;
 
 @Service

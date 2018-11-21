@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -18,6 +19,7 @@ public class Choice {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Integer id;
 	
+	@NotEmpty
 	private String value;
 	
 	@JsonIgnore
@@ -33,6 +35,11 @@ public class Choice {
 	public Choice(Integer id) {
 		super();
 		this.id = id;
+	}
+	
+	public Choice(String value) {
+		super();
+		this.value = value;
 	}
 
 	public Choice(String value, Question question, List<Answer> answers) {
