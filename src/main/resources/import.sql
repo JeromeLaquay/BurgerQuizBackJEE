@@ -2,21 +2,21 @@
 insert into quiz (id,name) values (1,'Burger Quiz');
 
 	--création de la 1ere question
-	insert into question (id,text,quiz_id,type_q) values (1,'Croyez-vous qu’il sera possible un jour de connaître l’avenir, de modifier le passe ?',1,'qcm');
+	insert into question (id,text,quiz_id,typequestion) values (1,'Croyez-vous qu’il sera possible un jour de connaître l’avenir, de modifier le passe ?',1,'qcm');
 		--choix de la question 1 
 		insert into choice (id,value,question_id) values (1,'OUI',1);
 		insert into choice (id,value,question_id) values (2,'NON',1);
 		--reponse : Blanche fesse et les sept mains
 
 	--création de la 2e question
-	insert into question (id,text,quiz_id) values (2,'Voudriez-vous un jour voyager à travers une faille temporelle et retourner à l’époque où le LOSC était en Ligue 1',1,'qcm');
+	insert into question (id,text,quiz_id,typequestion) values (2,'Voudriez-vous un jour voyager à travers une faille temporelle et retourner à l’époque où le LOSC était en Ligue 1',1,'qcm');
 		--choix de la question 1 
 		insert into choice (id,value,question_id) values (3,'OUI',2);
 		insert into choice (id,value,question_id) values (4,'NON',2);
 		--réponse : Les voyages dans le temps
 		
 	--création de la 2e question
-	insert into question (id,text,quiz_id) values (3,'Quel prix seriez-vous prêt à débourser pour discuter avec vos ancêtres ?',1,'qcm');
+	insert into question (id,text,quiz_id,typequestion) values (3,'Quel prix seriez-vous prêt à débourser pour discuter avec vos ancêtres ?',1,'qcm');
 		--choix de la question 1 
 		insert into choice (id,value,question_id) values (5,'10 bitcoins',3);
 		insert into choice (id,value,question_id) values (6,'100 bitcoins',3);
@@ -24,7 +24,7 @@ insert into quiz (id,name) values (1,'Burger Quiz');
 		--réponse : Les voyages dans le temps
 	
 			--création de la 2e question
-	insert into question (id,text,quiz_id) values (4,'Quelle est la raison principale pour laquelle ce genre de technologie doit voir le jour ?',1,'qcm');
+	insert into question (id,text,quiz_id,typequestion) values (4,'Quelle est la raison principale pour laquelle ce genre de technologie doit voir le jour ?',1,'qcm');
 		--choix de la question 1 
 		insert into choice (id,value,question_id) values (9,'Innovation',4);
 		insert into choice (id,value,question_id) values (10,'Gagner la guerre',4);
@@ -34,7 +34,7 @@ insert into quiz (id,name) values (1,'Burger Quiz');
 		--réponse : Les voyages dans le temps
 		
 		--création de la 2e question
-	insert into question (id,text,quiz_id) values (5,'Donner le mot qui résume pour vous cette technologie.',1,'text');
+	insert into question (id,text,quiz_id,typequestion) values (5,'Donner le mot qui résume pour vous cette technologie.',1,'text');
 --création de plusieurs quiz
 --insert into quiz (id,name) values (2,'Sandwich Quiz');
 --insert into quiz (id,name) values (3,'Panini Quiz');
