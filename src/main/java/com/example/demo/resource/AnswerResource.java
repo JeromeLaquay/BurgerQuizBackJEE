@@ -1,7 +1,5 @@
 package com.example.demo.resource;
 
-import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -26,13 +24,6 @@ public class AnswerResource {
 	}
 
 	private AnswerService answerService;
-	
-	//getAll
-	@CrossOrigin
-	@RequestMapping("/answers")
-	public List<Answer> get() {
-		return answerService.getAll();
-	}
 	
 	//createOrUpdate
 	@CrossOrigin

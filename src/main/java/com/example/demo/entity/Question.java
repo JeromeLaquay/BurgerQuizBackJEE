@@ -33,17 +33,12 @@ public class Question {
 	
 	public Question() {
 	}
-	
-	public Question(String text, String typequestion) {
-		super();
-		this.text = text;
-		this.typequestion = typequestion;
-	}
 
-	public Question(String text, List<Choice> choices) {
+	public Question(String text, List<Choice> choices, String typequestion) {
 		super();
 		this.text = text;
 		this.choices = choices;
+		this.typequestion = typequestion;
 	}
 
 	public Integer getId() {

@@ -1,7 +1,5 @@
 package com.example.demo.resource;
 
-import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +20,6 @@ public class QuestionResource {
 	}
 
 	private QuestionService questionService;
-	
-	@CrossOrigin
-	@RequestMapping("/questions")
-	public List<Question> get() {
-		return questionService.getAll();
-	}
 	
 	@CrossOrigin
 	@RequestMapping(method = RequestMethod.POST,value ="/questions", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})

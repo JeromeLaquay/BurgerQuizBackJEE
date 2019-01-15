@@ -29,19 +29,6 @@ public class Answer {
 	public Answer() {
 	}
 
-	public Answer(Integer id, Choice choice, QuizInstance quizInstance) {
-		super();
-		this.id = id;
-		this.choice = choice;
-		this.quizInstance = quizInstance;
-	}
-
-	public Answer(Choice choice, QuizInstance quizInstance) {
-		super();
-		this.choice = choice;
-		this.quizInstance = quizInstance;
-	}
-
 	public Answer(Choice choice, QuizInstance quizInstance, String text) {
 		super();
 		this.choice = choice;

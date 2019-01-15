@@ -32,13 +32,6 @@ public class QuizInstance {
 		this.nextQuestion = nextQuestion;
 	}
 
-	public QuizInstance(Integer id, boolean nextQuestion, Quiz quiz) {
-		super();
-		this.id = id;
-		this.nextQuestion = nextQuestion;
-		this.quiz = quiz;
-	}
-
 	public QuizInstance(Integer id, boolean nextQuestion, Quiz quiz, List<Answer> answers) {
 		super();
 		this.id = id;

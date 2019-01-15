@@ -3,8 +3,6 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -51,18 +49,6 @@ public abstract class AbstractPackagerViewTest {
     public void setup() {
         this.mockMvc = webAppContextSetup(webApplicationContext).build();
         this.baseUrl = "http://localhost:" + this.serverPort;
-//        list = answerRepository.saveAll(
-//                IntStream
-//                        .rangeClosed(0, MAX_ELEMENT - 1)
-//                        .mapToObj(i -> new Answer("j",null))
-//                        .collect(Collectors.toList()));
-//        Answer first = list.get(0);
-//        doublon = list.get(MAX_ELEMENT - 1);
-//        doublon.setId(first.getId());
-//        doublon.setValue(first.getValue());
-//
-//        answerRepository.save(doublon);
-//        System.out.println("before done ---------------------");
     }
 
 }

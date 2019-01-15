@@ -1,6 +1,5 @@
 package com.example.demo.resource;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -25,12 +24,6 @@ public class QuizInstanceResource {
 	}
 	
 	private QuizInstanceService quizInstanceService;
-	
-	@CrossOrigin
-	@RequestMapping("/quiz_instances")
-	public List<QuizInstance> get() {
-		return quizInstanceService.getAll();
-	}
 	
 	@CrossOrigin
 	@RequestMapping(method = RequestMethod.GET, value="/quiz_instances/{id}")
