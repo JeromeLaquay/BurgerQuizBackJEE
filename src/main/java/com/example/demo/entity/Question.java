@@ -25,6 +25,8 @@ public class Question {
 	@OneToMany(mappedBy="question")
 	private List<Choice> choices;
 	
+	private String type_q;
+	
 	@JsonIgnore
 	@ManyToOne
 	private Quiz quiz;
@@ -32,9 +34,10 @@ public class Question {
 	public Question() {
 	}
 	
-	public Question(String text) {
+	public Question(String text, String type_q) {
 		super();
 		this.text = text;
+		this.type_q = type_q;
 	}
 
 	public Question(String text, List<Choice> choices) {
@@ -67,17 +70,26 @@ public class Question {
 		this.choices = choices;
 	}
 
-	@Override
-	public String toString() {
-		return "Question [id=" + id + ", text=" + text + ", choices=" + choices + "]";
-	}
-
 	public Quiz getQuiz() {
 		return quiz;
 	}
 
 	public void setQuiz(Quiz quiz) {
 		this.quiz = quiz;
+	}
+
+	public String getTypeQ() {
+		return type_q;
+	}
+
+	public void setTypeQ(String type_q) {
+		this.type_q = type_q;
+	}
+
+	@Override
+	public String toString() {
+		return "Question [id=" + id + ", text=" + text + ", choices=" + choices + ", type_q=" + type_q + ", quiz=" + quiz
+				+ "]";
 	}
 	
 }

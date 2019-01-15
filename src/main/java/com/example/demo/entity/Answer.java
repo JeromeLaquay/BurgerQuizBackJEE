@@ -23,6 +23,8 @@ public class Answer {
 	@ManyToOne
 	private QuizInstance quizInstance;
 	
+	private String text;
+	
 	
 	public Answer() {
 	}
@@ -40,6 +42,12 @@ public class Answer {
 		this.quizInstance = quizInstance;
 	}
 
+	public Answer(Choice choice, QuizInstance quizInstance, String text) {
+		super();
+		this.choice = choice;
+		this.quizInstance = quizInstance;
+		this.text = text;
+	}
 
 	public Integer getId() {
 		return id;
@@ -69,11 +77,17 @@ public class Answer {
 		this.quizInstance = quizInstance;
 	}
 
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
 	@Override
 	public String toString() {
-		return "Answer [id=" + id + ", choice=" + choice.getId() + ", quizInstance=" + quizInstance.getId() + "]";
+		return "Answer [id=" + id + ", choice=" + choice + ", quizInstance=" + quizInstance + ", text=" + text + "]";
 	}
-	
-	
 	
 }

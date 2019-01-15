@@ -46,7 +46,7 @@ public class QuestionRestTemplateTest extends AbstractPackagerViewTest{
 	public void validCreation() {
 		try {
 			ResponseEntity<Question> quizInstance = restTemplate.postForEntity(baseUrl + "/questions",
-					new Question("question"),
+					new Question("question","type"),
 					Question.class);
 			Assert.assertEquals(HttpStatus.OK, quizInstance.getStatusCode());
 		}catch(HttpClientErrorException e) {
